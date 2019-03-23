@@ -1,0 +1,49 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            #menu{
+                background-color: bisque;
+                transition: .2s;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Hello. World</h1>
+        <button id="menu_btn">BUTTON</button>
+
+        <div id="menu">
+                <h1>menu1</h1>
+                <h1>menu2</h1>
+                <h1>menu3</h1>
+        </div>
+
+        <script>
+
+            var isMenuOpen = false;
+
+            document.getElementById('menu');
+            if(isMenuOpen){
+                //열려있다. 닫아야됨.ㄴ
+                menu.style.display = 'none';
+                isMenuOpen = false;
+            }else{
+                //닫혀있다. 열어야됨
+                document.getElementById('menu').style.display = 'block';
+                isMenuOpen = true;
+            }
+            var isLogined = false;
+            window.onload = function(){
+                if(isLogined){
+                    document.getElementById('profile').innerHTML='로그인됨'
+                }else{
+                    document.getElementById('profile').innerHTML='로그인됨'
+                }
+            }
+        </script>
+    </body>
+</html>
+

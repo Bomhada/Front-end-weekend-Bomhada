@@ -1,0 +1,14 @@
+{
+  "name": "0330",
+  "version": "1.0.0",
+  "description": "",
+  "main": "pract1.js",
+  "scripts": {
+    "start": "node pract1.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}

@@ -80,7 +80,29 @@ console.log(typeof(num))
 
 /*
 if(''){
-    console.log('true')
+    
 }
+console.log('true');
 */
 
+// var user ={
+//     name: 'bomi',
+//     age: 20,
+//     address: 'secret'
+// }
+
+// console.log(user);
+
+// var fruits = ['banana','orange','strawberry'];
+
+// console.log(fruits.length);
+
+document.write('<li>a</li>');
+var i = 0;
+
+while(i < 3){
+    document.write('<li>b</li>');
+    document.write('<li>c</li>');
+    i = i+1;
+}
+    document.write('<li>d</li>');

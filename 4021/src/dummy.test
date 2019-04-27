@@ -1,0 +1,234 @@
+
+// function Profile(props){
+//     const style ={
+//         backgroundColor: props.bg,
+//         color : props.color
+//     }
+//     return <h1 style={style}>{myName}{myAge}</h1>
+// }
+
+class Profile extends Component{
+
+    render(){
+        const {bg,color} = this.props;
+
+        const style ={
+            backgroundColor: bg,
+            color: color
+        }
+        return <h1 style={style}>{myName} {myAge}</h1>
+    }
+
+}
+
+Profile.defaultProps = {
+    bg:"blue",
+    color:"white"
+}
+
+// class Profile2 extends Component{
+
+//     render(){
+//         const {bg,color,width,height,transform,margineTop} = this.props;
+
+//         const style ={
+//             backgroundColor: bg,
+//             color: color,
+//             width: width,
+//             height: height,
+//             transform: transform,
+//             margineTop: margineTop
+//         }
+//         return <h1 style={style}>{myName} {myAge}</h1>
+//     }
+
+// }
+
+//jsx 문법
+
+const myName = 'Blooom';
+const myAge = 20;
+
+const view = <Fragment>
+    <h1>HELLOW</h1>
+    <h1>HELL</h1>
+    {/* <h1 style={{backgroundColor:"crimson" ,color:"#fff"}}>{myName} {myAge}</h1> */}
+    <Profile bg="crimson" color="#fff"></Profile>
+    {/* <Profile2 bg="brown" color="#fff" width="200px" height="200px" transform="rotate(45deg)"margine-top="40px"></Profile2> */}
+</Fragment>
+
+
+
+
+
+
+class App extends Component {
+
+  // constructor(props){
+  //   super(props);
+  //   // this.state = {
+  //   //   count : 0,
+  //   // }
+  //   this.increaseCount = this.increaseCount.bind(this);
+  //   this.decreaseCount = this.decreaseCount.bind(this);
+  // }
+
+  // increaseCount(){
+  //   console.log('increase')
+  //   // this.state.count = this.state.count+1;
+  //   this.setState({
+  //     count: this.state.count+1
+  //   })
+  // }
+  // decreaseCount(){
+  //   console.log('decrease')
+  //   this.setState({
+  //     count: this.state.count-1
+  //   })
+  // }
+
+    OR
+
+  state = {
+    count: 0,
+  }
+
+  increaseCount = ()=>{
+    console.log('increase')
+    // this.state.count = this.state.count+1;
+    this.setState({
+      count: this.state.count+1
+    })
+  }
+  decreaseCount = ()=>{
+    console.log('decrease')
+    this.setState({
+      count: this.state.count-1
+    })
+  }
+
+  render() {
+    const {count} = this.state;
+
+    // if(count > 10){
+    //   return <h1>초과입니다.</h1>
+    // } >이것도 사용 가능
+
+    return (
+      count>10?
+      <h1> 초과입니다. </h1>:
+      <Fragment>
+      <h1>{count}</h1>
+      <button onClick={this.increaseCount}>+</button>
+      <button onClick={this.decreaseCount}>-</button>
+      </Fragment>
+      
+    );
+  }
+}
+
+
+
+
+class NumberItem extends Component{
+  static defaultProps = {
+    number: 0,
+  }
+  onClick = (e)=>{
+    console.log('click')
+    if(this.props.onClick){
+      this.props.onClick(e);
+    }
+  }
+
+  render(){
+    const {number} = this.props;
+    const style = {
+      backgroundColor:"crimson",
+      color:"white",
+      padding:"16px",
+      margine:"16px",
+      fontSize:"30px",
+      display:"inline-block"
+    }
+    return <div style={style} onClick={this.onClick}>{number}</div>
+  }
+}
+
+class App extends Component{
+  state = {
+    number: 7
+  }
+
+  onClick = ()=>{
+    console.log('App.onClick')
+    this.setState({
+      number:this.state.number+1
+    })
+  }
+  render(){
+    const{number} = this.state;
+
+    return <NumberItem number = {number} onClick = {this.onClick}/>;
+  }
+}
+
+
+state = {
+    number: 7
+  }
+
+  constructor(props){
+    super(props);
+    console.log("constructor")
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState){
+    console.log("getDerivedStateFromProps")
+    return null;
+  }
+// 중요쓰 3가지
+  componentDidMount(){
+    console.log("componentDidMount")
+  }
+
+  shouldComponentUpdate(nextProps, nextState){
+    console.log("shouldComponentUpdate")
+    if(nextState.number > 10){
+      return false;
+    }
+    return true;
+  }
+
+  getSnapshotBeforeUpdate(prevProps, prevState){
+    console.log("getSnapshotBeforeUpdate")
+    const snapshot = {}
+    return snapshot
+  }
+
+  //중요쓰 ^^^^ +render까지
+
+  componentDidUpdate(prevProps, prevState, snapshot){
+    console.log("componentDidUpdate")
+  }
+
+  componentWillUnmount(erroe,info){
+    console.log("componentWillUnmount")
+  }
+
+  componentDidCatch(){
+    console.log()
+  }
+
+  onClick = ()=>{
+    this.setState({
+      number:this.state.number+1
+    })
+  }
+
+  render(){
+    console.log("render")
+    const{number} = this.state;
+
+    return <h1  onClick = {this.onClick}>{number}</h1>;
+  }

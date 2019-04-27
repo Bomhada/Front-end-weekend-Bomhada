@@ -1,0 +1,204 @@
+import React, { Component } from 'react';
+
+
+class Profile extends Component {
+
+  onClick = ()=>{
+    const {id, name, age} = this.props;
+    this.props.onItemClick(id, name, age);
+  }
+
+  render (){
+    const {name, age} = this.props;
+    return (
+      <div style={{backgroundColor: "powderblue", color:"#333333", padding: 30, marginBottom: 20}} onClick={this.onClick}>
+        <h1>{name}</h1>
+        <p>{age}</p>
+      </div>
+    )
+  }
+}
+
+// 배열
+class App extends Component{
+
+  onItemClick = (id, name, age)=>{
+    if(id===1){
+      console.log('askdfjaksdfj');
+    }else{
+      console.log("onItemClick", id, name, age)
+    }
+  }
+  
+  render(){
+    const list = [
+      {id: 1, name: 'jack', age: 20},
+      {id: 2, name: 'jan', age: 20},
+      {id: 3, name: 'feb', age: 20},
+      {id: 4, name: 'mar', age: 20},
+    ]
+    // ()=>{}
+    // function(){}
+    const listView = list.map((item, index, array)=>{
+      const {id, name, age} = item;
+      return <Profile key={id} id={id}name={name} age={age} onItemClick={this.onItemClick} />;
+    })
+
+
+    return (
+      <div>
+        {listView}
+      </div>
+    );
+  }
+}
+
+export default App;
+
+
+
+
+
+import React, { Component } from 'react';
+
+
+//생명주기
+
+class UserList extends Component{
+
+  static defaultProps = {
+    users:[]
+  }
+
+  shouldComponentUpdate(nextProps, nextState){
+    return this.props.users !== nextProps.users; //같은 메모리를 사용하면 된다. (return false;)
+  }
+
+  render(){
+    console.log("user lIst render")
+    const usersView = this.props.users.map((name, index)=>{
+      return <h1 key={index}>
+        {name}
+      </h1>
+    });
+
+    return <div>
+      {usersView}
+    </div>
+  }
+}
+
+class App extends Component{
+
+  state = {
+    users:["jack"],
+    count: 0
+  }
+
+  onClick = () =>{
+    this.setState({
+      count: this.state.count+1
+    })
+  }
+
+  addUser = () =>{
+    const users = this.state.users;
+    users.push("Joi");
+
+    // const newUsers = [...this.state.users]
+    // newUsers.push("Joi")
+
+    // this.state.users = ["jack"]
+    const newUsers = [...this.state.users, "Joi"];
+    // newUsers.push("Joi")
+
+
+    this.setState({
+      users: users
+    })
+  }
+
+  render (){
+    console.log("app render")
+    const {users, count} = this.state;
+
+    return(
+      <div>
+        <UserList users = {users} />
+        <h1>{count}</h1>
+        <button onClick={this.onClick}>test</button>
+        <button onClick={this.addUser}>addUser</button>
+      </div>
+    )
+  }
+}
+
+
+export default App;
+
+
+
+import React, { Component } from 'react';
+
+
+
+class App extends Component{
+
+  state ={
+    content:"",
+    email:"",
+    password:"",
+    name:"",
+    address:""
+  }
+
+  show = ()=>{
+    //input 의 내용을 읽어봐서 화면에 출력
+    // input의 내용을 읽어온다
+    // state를 활용하는 방법 (react에서 권장)
+    // 그 값을 state에 저장한다
+
+    // ref를 활용하는 방법
+
+    //   console.log(this.refs.myInput.value)
+    //   this.setState({
+    //     content: this.refs.myInput.value
+    //   })
+
+    this.setState({
+      content: this.state.inputValue
+    })
+  }
+
+    onChange = (e)=>{
+      this.setState({
+        [e.target.name]: e.target.value
+      })
+    }
+
+
+  render (){
+
+    const {
+      content,
+      email,
+      password,
+      name,
+      address
+    } = this.state;
+    
+    return(
+      <div>
+        <input placeholder="email" name="email" value={email} onChange={this.onChange}/>
+        <input placeholder="password" name="password" value={password} onChange={this.onChange}/>
+        <input placeholder="name" name="name" value={name} onChange={this.onChange}/>
+        <input placeholder="address" name="address" value={address} onChange={this.onChange}/>
+        <button onClick={this.show}>show</button>
+        <h1>{content}</h1>
+      </div>
+    )
+  }
+}
+
+
+export default App;

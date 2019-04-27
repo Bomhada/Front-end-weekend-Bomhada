@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    body,html{
+      background: #c79b9b;
+      margin: 0;
+      padding: 0;
+    }
+    header{
+      position: relative;
+      height: 60px;
+      background: #8d0000;
+      color: #fff;
+    }
+    #logo_wraper{
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    #logo{
+      line-height: 60px;
+      padding: 0 60px;
+      font-size: 2rem;
+    }
+    header>nav{
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    header>nav>ul{
+      margin: 0;
+      list-style: none;
+    }
+    header>nav>ul>li{
+      line-height: 60px;
+      margin-right: 60px;
+    }
+    header>nav>ul>li>a{
+      text-decoration: none;
+      color: inherit;
+    }
+    #wrapper{
+      display: flex;
+      justify-content: center;
+    }
+    .login_form>*{
+      margin: 10px 0;
+    }
+    .login_form{
+      margin-top: 5rem;
+      width: 300px;
+    }
+    .login_form>input{
+      display: block;
+      width: 100%;
+      
+    }
+    .login_form>button{
+      width: 100%;
+      padding: 8px 16px;
+      background: #666;
+      color: #fff;
+      padding: 1rem 0;
+      font-size: 1.5rem;
+      transition: .3s;
+      border: none;
+    }
+    .login_form>button:hover{
+      background: #8d0000;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+ 
+<header>
+  <div id="logo_wraper">
+    <div id="logo">
+      LOGO
+    </div>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="#">E-mail</a></li>
+    </ul>
+  </nav>
+</header>
+ 
+  <section id="wrapper">
+    <div>
+      <form class="login_form" action="/login" method="post">
+        <input name="email" type="email">
+        <input name="password" type="password">
+        <button type="submit">BUtton</button>
+      </form>
+    </div>
+  </section>
+</body>
+</html>

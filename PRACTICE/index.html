@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+            body {
+             min-height: 2000px; 
+            } 
+            #elem {
+              position: relative;
+              top: 20px;
+              left: 20px ;
+              width: 50px;
+              height: 50px;
+              background-color: plum; 
+            }
+         </style> 
+         <script>
+            function myFunction(){
+                var element = document.getElementById('elem');
+                var desiredPosition = 500;
+                if(window.pageXOffset >= desiredPosition){
+                    element.style.cssText += 'position: fixed; top: auto; bottom: 20px; right: 20px; left: auto;'
+                } else {
+                    element.style.cssText += 'position: relative; top: 20px; bottom: auto; right: auto; left: 20px; '
+                }
+            }
+         </script>
+         <script type = "text/javascript">
+          window.onscroll = myFunction; //calling myFunction each time we scroll
+         </script>
+</head>
+<body>
+    
+    <div class="elem"></div>
+
+</body>
+</html>

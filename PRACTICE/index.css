@@ -1,0 +1,48 @@
+@charset 'utf-8';
+
+body {
+    font-family: sans-serif;
+  }
+  
+  .one {
+    height: 1600px;
+    background: beige;
+  }
+  
+  .two {
+    height: 600px;
+  }
+  
+  .text {
+    width: 92%;
+    position: fixed;
+    word-wrap: break-word;
+  }
+  
+  .element {
+    position: fixed;
+    top: 60px;
+    right: 40px;
+    opacity: 0;
+    transition: opacity .2s ease, top .2s ease;
+  }
+  
+  .footer {
+    background: lightcoral;
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    bottom: -60px;
+    display: flex;
+    align-items: flex-end;
+    transition: bottom .2s ease;
+  }
+  
+  .show-element {
+    opacity: 1;
+    top: 40px;
+  }
+  
+  .show-footer {
+    bottom: 0px;
+  }
